@@ -1,0 +1,24 @@
+p {
+    font-size: 11px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.contact-list-item {
+    cursor: pointer;
+}
+
+.contact-list-item:hover {
+    background-color: #CEE7F2 !important;
+}
+
+.contact-list-container {
+    width: 350px;
+}
+
+.selected {
+    background-color: #CEE7F2 !important;
+}

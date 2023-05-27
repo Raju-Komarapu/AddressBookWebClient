@@ -1,0 +1,10 @@
+<div class="contact-list-container ms-4">
+    <ng-container *ngFor="let contact of contacts">
+        <div [routerLink]="[contact.id]" [ngClass]="contact.id===selectedId? 'selected':'' "
+            class="contact-list-item border border-2 ps-3 pt-1 ">
+            <h2 class="m-0">{{contact.name}}</h2>
+            <p class="m-0 pt-1">{{contact.email}}</p>
+            <p class="m-0 pb-2">{{contact.mobile}}</p>
+        </div>
+    </ng-container>
+</div>

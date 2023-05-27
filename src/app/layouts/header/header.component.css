@@ -1,0 +1,15 @@
+.nav-item {
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    background-color: orange;
+}
+
+.nav-link:hover {
+    color: black !important;
+}
+
+header {
+    font-family: 'Century Gothic', sans-serif;
+}

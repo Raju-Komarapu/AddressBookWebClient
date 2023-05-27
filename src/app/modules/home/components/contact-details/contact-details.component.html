@@ -1,0 +1,15 @@
+<div class="contact-details ms-5">
+    <div class="d-flex justify-content-between">
+        <h2>{{contact.name}}
+        </h2>
+        <div class="d-flex align-self-center w-30 justify-content-between">
+            <p class="cursor-pointer text-uppercase m-0" (click)="openContactForm(contact)"><img src="/assets/images/pen.png" class="icon me-1"> Edit</p>
+            <p class="cursor-pointer text-uppercase m-0 ms-4" (click)="deleteContact(contact.id)"><img src="/assets/images/trash.png" class="icon me-1"> delete</p>
+        </div>
+    </div>
+    <p>Email: {{contact.email}}</p>
+    <p class="m-0">Mobile: +91 {{contact.mobile}}</p>
+    <p>Landline: {{contact.landline || 'Not available'}}</p>
+    <p>Website: {{contact.website || 'Not available'}}</p>
+    <p>Address: {{contact.address || 'Not available'}}</p>
+</div>
