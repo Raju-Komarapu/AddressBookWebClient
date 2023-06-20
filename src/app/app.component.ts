@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoaderComponent } from './shared/components/loader';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test';
+  loaderComponent = LoaderComponent;
 }

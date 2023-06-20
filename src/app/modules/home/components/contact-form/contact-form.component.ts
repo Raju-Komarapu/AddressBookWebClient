@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Contact } from 'src/app/interfaces/contact.interface';
-import { ContactService } from 'src/app/services/contact.service';
+import { ContactService } from 'src/app/shared/services/contact.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -25,7 +25,7 @@ export class ContactFormComponent implements OnInit {
   ngOnInit(): void {
     this.addContactForm = this.formBuilder.group({
       name: [this.contact?.name || '', Validators.required],
-      email: [this.contact?.email || '', Validators.required],
+      email: [this.contact?.email || '', [Validators.required, Validators.email]],
       mobile: [this.contact?.mobile || '', Validators.required],
       landline: [this.contact?.landline || ''],
       website: [this.contact?.website || ''],
@@ -48,11 +48,11 @@ export class ContactFormComponent implements OnInit {
       }
       if (this.contact) {
         this.contactService.updateContact(contact);
-        this.contactService.contacts = this.contactService.contactSubject.getValue();
         const index = this.contactService.contacts.findIndex(contact => contact.id === this.contact.id);
         if (index !== -1) {
           this.contactService.contacts[index] = contact;
           this.contactService.contactSubject.next(this.contactService.contacts);
+          this.router.navigate([`/home/contacts/${contact.id}`])
         }
       }
       else {

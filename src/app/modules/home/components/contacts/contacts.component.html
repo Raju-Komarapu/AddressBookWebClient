@@ -1,10 +1,17 @@
-<div class="contact-list-container ms-4">
+<div class="d-flex align-items-center ms-4">
+    <input type="text" class="form-control my-3 w-100 px-2" placeholder="search" [(ngModel)]="searchText">
+    <button class="btn btn-outline-dark btn-sm ms-3" (click)="reset()">clear</button>
+</div>
+<div class="contact-list-container ms-4 border border-2">
     <ng-container *ngFor="let contact of contacts">
-        <div [routerLink]="[contact.id]" [ngClass]="contact.id===selectedId? 'selected':'' "
-            class="contact-list-item border border-2 ps-3 pt-1 ">
-            <h2 class="m-0">{{contact.name}}</h2>
-            <p class="m-0 pt-1">{{contact.email}}</p>
-            <p class="m-0 pb-2">{{contact.mobile}}</p>
+        <div
+            *ngIf="searchText === ' ' || ((contact.name.toLowerCase()).concat(contact.email.toLowerCase()).concat(contact.mobile)).includes(searchText.toLowerCase())">
+            <div [routerLink]="[contact.id]" routerLinkActive="selected"
+                class="contact-list-item border-bottom border-2 ps-3 pt-1 ">
+                <h2 class="m-0">{{contact.name}}</h2>
+                <p class="m-0 pt-1">{{contact.email}}</p>
+                <p class="m-0 pb-2">{{contact.mobile}}</p>
+            </div>
         </div>
     </ng-container>
 </div>

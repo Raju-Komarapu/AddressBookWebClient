@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Contact } from 'src/app/interfaces/contact.interface';
-import { ContactService } from 'src/app/services/contact.service';
+import { ContactService } from 'src/app/shared/services/contact.service';
 import { ContactFormComponent } from '../contact-form/contact-form.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { ContactFormComponent } from '../contact-form/contact-form.component';
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.css']
 })
-export class ContactDetailsComponent implements OnInit, OnDestroy{
+export class ContactDetailsComponent implements OnInit {
   contactId!: string;
   contact!: Contact;
   modalRef?: BsModalRef
@@ -24,10 +24,10 @@ export class ContactDetailsComponent implements OnInit, OnDestroy{
     this.route.paramMap.subscribe(
       (params) => {
         this.contactId = params.get('id') as string;
-        this.contactServices.selectedId = this.contactId;
-        this.contactServices.getContact(this.contactId).subscribe(
+        this.contactServices.contactSubject.subscribe(
           (result) => {
-            this.contact = result;
+            let index = result.findIndex(contact => contact.id === this.contactId);
+            this.contact = result[index];
           })
       });
   }
@@ -41,10 +41,6 @@ export class ContactDetailsComponent implements OnInit, OnDestroy{
     let index = this.contactServices.contacts.findIndex(obj => obj.id === id);
     this.contactServices.contacts.splice(index, 1);
     this.contactServices.contactSubject.next([...this.contactServices.contacts]);
-    this.router.navigate([`/home/contacts/${this.contactServices.contacts[0].id}`]);
-  }
-
-  ngOnDestroy(): void {
-    this.contactServices.selectedId = null;
+    this.router.navigate([`/home/contacts`]);
   }
 }

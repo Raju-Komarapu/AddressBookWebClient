@@ -5,10 +5,10 @@
   <div class="container-fluid px-1">
     <ul class="navbar-nav text-capitalize align-items-center ">
       <li class="nav-item">
-        <a class="nav-link text-white" data-bs-toggle="tooltip" title="Home" href="#">home</a>
+        <a class="nav-link text-white" data-bs-toggle="tooltip" title="Home" routerLink="/home/contacts">home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" (click)="openContactForm()">+ add</a>
+        <a class="nav-link text-white cursor-pointer"  data-bs-toggle="tooltip" title="Add contact" (click)="openContactForm()">+ add</a>
       </li>
     </ul>
     <div>

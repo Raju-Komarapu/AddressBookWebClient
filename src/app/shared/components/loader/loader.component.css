@@ -1,0 +1,15 @@
+.spinner-border {
+    background-color: transparent !important;
+  }
+  
+  .spinner-border::after {
+    background-color: transparent !important;
+  }
+
+  #spinner.backdrop {
+    background-color: transparent !important;
+  }
+
+  .ng-http-loader-overlay {
+    background-color: transparent !important;
+  }

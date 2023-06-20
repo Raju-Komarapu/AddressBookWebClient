@@ -9,6 +9,7 @@ h2 {
 
 .contact-list-item {
     cursor: pointer;
+    border-collapse: collapse;
 }
 
 .contact-list-item:hover {
@@ -17,8 +18,28 @@ h2 {
 
 .contact-list-container {
     width: 350px;
+    height: 400px;
+    overflow-y: scroll;
+    border-collapse: collapse;
 }
 
 .selected {
     background-color: #CEE7F2 !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #abadad;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

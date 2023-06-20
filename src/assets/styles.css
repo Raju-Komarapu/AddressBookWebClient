@@ -1,3 +1,11 @@
-/* .noto-sans{
+.noto-sans{
     font-family: 'Noto Sans', sans-serif;
-} */
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.resize-none {
+    resize: none;
+}
